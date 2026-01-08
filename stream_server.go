@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb "grpc_working/proto/stream_gen"
+	pb "grpc_server/proto/stream_gen"
 	"time"
 )
 

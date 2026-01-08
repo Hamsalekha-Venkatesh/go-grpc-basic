@@ -1,4 +1,4 @@
-module grpc_working
+module grpc_server
 
 go 1.24.0
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pb "grpc_working/proto/gen"
+	pb "grpc_server/proto/gen"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"

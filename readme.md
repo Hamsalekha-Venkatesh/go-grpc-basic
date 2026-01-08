@@ -13,6 +13,14 @@
   -I proto \
   --go_out=. \
   --go-grpc_out=. \
-  proto/greeter.proto proto/main.proto proto/add.proto`
+  proto/greeter.proto proto/stream.proto proto/main.proto proto/add.proto proto/goodbye.proto`
 
 5. `go get google.golang.org/grpc`
+
+`
+ protoc \       
+  -I proto \
+  --go_out=. \
+  --go-grpc_out=. \
+  proto/stream.proto
+`

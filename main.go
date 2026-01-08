@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	pbstream "grpc_working/proto/stream_gen"
+	// pb "grpc_server/proto/gen"
+	pbstream "grpc_server/proto/stream_gen"
 	"log"
 	"net"
 
@@ -10,13 +11,7 @@ import (
 )
 
 func main() {
-	listen, err := net.Listen("tcp", port)
-	if err != nil {
-		fmt.Println("Error listening: FAILED", err.Error())
-		return
-	}
-
-	lis, err := net.Listen("tcp", ":50052")
+	listen, err := net.Listen("tcp", ":50052")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -49,10 +44,10 @@ func main() {
 	streamingServer := grpc.NewServer()
 	fmt.Println("Streaming Server started. Listening on :50052")
 
-	pbstream.RegisterCalculatorServer(streamingServer, &streamServer{})
-	pbstream.RegisterStreamingServer(streamingServer, &streamClientServer{})
+	//pbstream.RegisterCalculatorServer(streamingServer, &streamServer{})
+	pbstream.RegisterStreamingServer(streamingServer, &BiDirectedServer{})
 
-	if err := streamingServer.Serve(lis); err != nil {
+	if err := streamingServer.Serve(listen); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 	//************* STREAMING gPRC Server ***************************

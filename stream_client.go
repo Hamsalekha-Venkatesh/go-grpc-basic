@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "grpc_working/proto/stream_gen"
+	pb "grpc_server/proto/stream_gen"
 	"io"
 
 	"google.golang.org/grpc/codes"
