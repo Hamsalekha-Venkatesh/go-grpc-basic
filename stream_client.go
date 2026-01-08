@@ -8,12 +8,13 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type streamClient struct {
+type streamClientServer struct {
+	pb.UnimplementedCalculatorServer
 	pb.UnimplementedStreamingServer
 }
 
-// Client side streaming example...
-func (sc *streamClient) SendClickStream(stream pb.Streaming_SendClickStreamServer) error {
+// SendClickStream Client side streaming example...
+func (sc *streamClientServer) SendClickStream(stream pb.Streaming_SendClickStreamServer) error {
 
 	// Aggregation map adId -> Counters
 	type perAdIdCounters struct {
@@ -51,8 +52,7 @@ func (sc *streamClient) SendClickStream(stream pb.Streaming_SendClickStreamServe
 				TotalIpClicks:     clickCounter.ipset,
 			},
 		}
-		return stream.SendAndClose(response)
+		return stream.SendMsg(response)
 	}
-
 	return nil
 }

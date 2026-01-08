@@ -8,6 +8,7 @@ import (
 
 type streamServer struct {
 	pb.UnimplementedCalculatorServer
+	pb.UnimplementedStreamingServer
 }
 
 // Server side streaming example...

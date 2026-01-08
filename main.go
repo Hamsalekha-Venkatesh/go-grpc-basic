@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb_stream "grpc_working/proto/stream_gen"
+	pbstream "grpc_working/proto/stream_gen"
 	"log"
 	"net"
 
@@ -49,7 +49,9 @@ func main() {
 	streamingServer := grpc.NewServer()
 	fmt.Println("Streaming Server started. Listening on :50052")
 
-	pb_stream.RegisterCalculatorServer(streamingServer, &streamServer{})
+	pbstream.RegisterCalculatorServer(streamingServer, &streamServer{})
+	pbstream.RegisterStreamingServer(streamingServer, &streamClientServer{})
+
 	if err := streamingServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
