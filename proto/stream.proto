@@ -1,0 +1,27 @@
+syntax="proto3";
+
+option go_package = "/proto/stream_gen;streamapipb";
+
+package CalculatorStream;
+
+service Calculator {
+  rpc Add(AddRequest) returns (AddResponse);
+  rpc GenerateFibonacci(FibonacciRequest) returns (stream FibonacciResponse); // server side streaming...
+}
+
+message AddRequest {
+  int32 num1 = 1;
+  int32  num2 = 2;
+}
+
+message AddResponse {
+  int32 totalSum = 1;
+}
+
+message FibonacciRequest {
+  int32 maxFibNumbers = 1;
+}
+
+message FibonacciResponse {
+  int32 number = 1;
+}
