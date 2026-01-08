@@ -205,6 +205,170 @@ func (x *FibonacciResponse) GetNumber() int32 {
 	return 0
 }
 
+type ClickRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ip            string                 `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
+	DeviceType    string                 `protobuf:"bytes,2,opt,name=deviceType,proto3" json:"deviceType,omitempty"`
+	AdId          string                 `protobuf:"bytes,3,opt,name=adId,proto3" json:"adId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClickRequest) Reset() {
+	*x = ClickRequest{}
+	mi := &file_stream_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClickRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClickRequest) ProtoMessage() {}
+
+func (x *ClickRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_stream_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClickRequest.ProtoReflect.Descriptor instead.
+func (*ClickRequest) Descriptor() ([]byte, []int) {
+	return file_stream_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ClickRequest) GetIp() string {
+	if x != nil {
+		return x.Ip
+	}
+	return ""
+}
+
+func (x *ClickRequest) GetDeviceType() string {
+	if x != nil {
+		return x.DeviceType
+	}
+	return ""
+}
+
+func (x *ClickRequest) GetAdId() string {
+	if x != nil {
+		return x.AdId
+	}
+	return ""
+}
+
+type ClickResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AdId          string                 `protobuf:"bytes,1,opt,name=adId,proto3" json:"adId,omitempty"`
+	ClickCount    *PerAdIdClickRequest   `protobuf:"bytes,2,opt,name=clickCount,proto3" json:"clickCount,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClickResponse) Reset() {
+	*x = ClickResponse{}
+	mi := &file_stream_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClickResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClickResponse) ProtoMessage() {}
+
+func (x *ClickResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_stream_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClickResponse.ProtoReflect.Descriptor instead.
+func (*ClickResponse) Descriptor() ([]byte, []int) {
+	return file_stream_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ClickResponse) GetAdId() string {
+	if x != nil {
+		return x.AdId
+	}
+	return ""
+}
+
+func (x *ClickResponse) GetClickCount() *PerAdIdClickRequest {
+	if x != nil {
+		return x.ClickCount
+	}
+	return nil
+}
+
+type PerAdIdClickRequest struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	TotalIpClicks     int32                  `protobuf:"varint,1,opt,name=totalIpClicks,proto3" json:"totalIpClicks,omitempty"`
+	TotalDeviceClicks int32                  `protobuf:"varint,2,opt,name=totalDeviceClicks,proto3" json:"totalDeviceClicks,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *PerAdIdClickRequest) Reset() {
+	*x = PerAdIdClickRequest{}
+	mi := &file_stream_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PerAdIdClickRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PerAdIdClickRequest) ProtoMessage() {}
+
+func (x *PerAdIdClickRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_stream_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PerAdIdClickRequest.ProtoReflect.Descriptor instead.
+func (*PerAdIdClickRequest) Descriptor() ([]byte, []int) {
+	return file_stream_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *PerAdIdClickRequest) GetTotalIpClicks() int32 {
+	if x != nil {
+		return x.TotalIpClicks
+	}
+	return 0
+}
+
+func (x *PerAdIdClickRequest) GetTotalDeviceClicks() int32 {
+	if x != nil {
+		return x.TotalDeviceClicks
+	}
+	return 0
+}
+
 var File_stream_proto protoreflect.FileDescriptor
 
 const file_stream_proto_rawDesc = "" +
@@ -219,11 +383,27 @@ const file_stream_proto_rawDesc = "" +
 	"\x10FibonacciRequest\x12$\n" +
 	"\rmaxFibNumbers\x18\x01 \x01(\x05R\rmaxFibNumbers\"+\n" +
 	"\x11FibonacciResponse\x12\x16\n" +
-	"\x06number\x18\x01 \x01(\x05R\x06number2\xb0\x01\n" +
+	"\x06number\x18\x01 \x01(\x05R\x06number\"R\n" +
+	"\fClickRequest\x12\x0e\n" +
+	"\x02ip\x18\x01 \x01(\tR\x02ip\x12\x1e\n" +
+	"\n" +
+	"deviceType\x18\x02 \x01(\tR\n" +
+	"deviceType\x12\x12\n" +
+	"\x04adId\x18\x03 \x01(\tR\x04adId\"j\n" +
+	"\rClickResponse\x12\x12\n" +
+	"\x04adId\x18\x01 \x01(\tR\x04adId\x12E\n" +
+	"\n" +
+	"clickCount\x18\x02 \x01(\v2%.CalculatorStream.PerAdIdClickRequestR\n" +
+	"clickCount\"i\n" +
+	"\x13PerAdIdClickRequest\x12$\n" +
+	"\rtotalIpClicks\x18\x01 \x01(\x05R\rtotalIpClicks\x12,\n" +
+	"\x11totalDeviceClicks\x18\x02 \x01(\x05R\x11totalDeviceClicks2P\n" +
 	"\n" +
 	"Calculator\x12B\n" +
-	"\x03Add\x12\x1c.CalculatorStream.AddRequest\x1a\x1d.CalculatorStream.AddResponse\x12^\n" +
-	"\x11GenerateFibonacci\x12\".CalculatorStream.FibonacciRequest\x1a#.CalculatorStream.FibonacciResponse0\x01B\x1fZ\x1d/proto/stream_gen;streamapipbb\x06proto3"
+	"\x03Add\x12\x1c.CalculatorStream.AddRequest\x1a\x1d.CalculatorStream.AddResponse2\xc1\x01\n" +
+	"\tStreaming\x12^\n" +
+	"\x11GenerateFibonacci\x12\".CalculatorStream.FibonacciRequest\x1a#.CalculatorStream.FibonacciResponse0\x01\x12T\n" +
+	"\x0fSendClickStream\x12\x1e.CalculatorStream.ClickRequest\x1a\x1f.CalculatorStream.ClickResponse(\x01B\x1fZ\x1d/proto/stream_gen;streamapipbb\x06proto3"
 
 var (
 	file_stream_proto_rawDescOnce sync.Once
@@ -237,23 +417,29 @@ func file_stream_proto_rawDescGZIP() []byte {
 	return file_stream_proto_rawDescData
 }
 
-var file_stream_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_stream_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_stream_proto_goTypes = []any{
-	(*AddRequest)(nil),        // 0: CalculatorStream.AddRequest
-	(*AddResponse)(nil),       // 1: CalculatorStream.AddResponse
-	(*FibonacciRequest)(nil),  // 2: CalculatorStream.FibonacciRequest
-	(*FibonacciResponse)(nil), // 3: CalculatorStream.FibonacciResponse
+	(*AddRequest)(nil),          // 0: CalculatorStream.AddRequest
+	(*AddResponse)(nil),         // 1: CalculatorStream.AddResponse
+	(*FibonacciRequest)(nil),    // 2: CalculatorStream.FibonacciRequest
+	(*FibonacciResponse)(nil),   // 3: CalculatorStream.FibonacciResponse
+	(*ClickRequest)(nil),        // 4: CalculatorStream.ClickRequest
+	(*ClickResponse)(nil),       // 5: CalculatorStream.ClickResponse
+	(*PerAdIdClickRequest)(nil), // 6: CalculatorStream.PerAdIdClickRequest
 }
 var file_stream_proto_depIdxs = []int32{
-	0, // 0: CalculatorStream.Calculator.Add:input_type -> CalculatorStream.AddRequest
-	2, // 1: CalculatorStream.Calculator.GenerateFibonacci:input_type -> CalculatorStream.FibonacciRequest
-	1, // 2: CalculatorStream.Calculator.Add:output_type -> CalculatorStream.AddResponse
-	3, // 3: CalculatorStream.Calculator.GenerateFibonacci:output_type -> CalculatorStream.FibonacciResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: CalculatorStream.ClickResponse.clickCount:type_name -> CalculatorStream.PerAdIdClickRequest
+	0, // 1: CalculatorStream.Calculator.Add:input_type -> CalculatorStream.AddRequest
+	2, // 2: CalculatorStream.Streaming.GenerateFibonacci:input_type -> CalculatorStream.FibonacciRequest
+	4, // 3: CalculatorStream.Streaming.SendClickStream:input_type -> CalculatorStream.ClickRequest
+	1, // 4: CalculatorStream.Calculator.Add:output_type -> CalculatorStream.AddResponse
+	3, // 5: CalculatorStream.Streaming.GenerateFibonacci:output_type -> CalculatorStream.FibonacciResponse
+	5, // 6: CalculatorStream.Streaming.SendClickStream:output_type -> CalculatorStream.ClickResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_stream_proto_init() }
@@ -267,9 +453,9 @@ func file_stream_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_stream_proto_rawDesc), len(file_stream_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_stream_proto_goTypes,
 		DependencyIndexes: file_stream_proto_depIdxs,

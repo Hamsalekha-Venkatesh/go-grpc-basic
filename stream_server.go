@@ -10,12 +10,13 @@ type streamServer struct {
 	pb.UnimplementedCalculatorServer
 }
 
-func (ss *streamServer) GenerateFibonacci(request *pb.FibonacciRequest, stream pb.Calculator_GenerateFibonacciServer) error {
+// Server side streaming example...
+func (ss *streamServer) GenerateFibonacci(request *pb.FibonacciRequest, stream pb.Streaming_GenerateFibonacciClient) error {
 	n := request.MaxFibNumbers
 	a, b := 0, 1
 
 	for range n {
-		err := stream.Send(&pb.FibonacciResponse{
+		err := stream.SendMsg(&pb.FibonacciResponse{
 			Number: int32(a + b),
 		})
 		if err != nil {

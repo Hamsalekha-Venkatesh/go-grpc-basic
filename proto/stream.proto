@@ -6,7 +6,11 @@ package CalculatorStream;
 
 service Calculator {
   rpc Add(AddRequest) returns (AddResponse);
+}
+
+service Streaming {
   rpc GenerateFibonacci(FibonacciRequest) returns (stream FibonacciResponse); // server side streaming...
+  rpc SendClickStream(stream ClickRequest) returns (ClickResponse); // client side streaming...
 }
 
 message AddRequest {
@@ -24,4 +28,20 @@ message FibonacciRequest {
 
 message FibonacciResponse {
   int32 number = 1;
+}
+
+message ClickRequest {
+  string ip = 1;
+  string deviceType = 2;
+  string adId = 3;
+}
+
+message ClickResponse {
+  string adId = 1;
+  PerAdIdClickRequest clickCount = 2;
+}
+
+message PerAdIdClickRequest {
+  int32 totalIpClicks = 1;
+  int32 totalDeviceClicks = 2;
 }
