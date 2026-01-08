@@ -1,0 +1,12 @@
+syntax="proto3";
+
+option go_package = "/proto/gen;mainapipb";
+
+message AddRequest {
+  int32 a = 1;
+  int32 b = 2;
+}
+
+message AddResponse {
+  int64  sum = 1;
+}

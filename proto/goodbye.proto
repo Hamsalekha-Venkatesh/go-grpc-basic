@@ -1,0 +1,11 @@
+syntax="proto3";
+
+option go_package = "/proto/gen;mainapipb";
+
+message GoodbyeRequest {
+  string name = 1;
+}
+
+message GoodbyeResponse {
+  string message = 1;
+}

@@ -9,4 +9,10 @@
   --go-grpc_out=. \
   proto/greeter.proto proto/main.proto`
 
+4. `protoc \
+  -I proto \
+  --go_out=. \
+  --go-grpc_out=. \
+  proto/greeter.proto proto/main.proto proto/add.proto`
+
 5. `go get google.golang.org/grpc`

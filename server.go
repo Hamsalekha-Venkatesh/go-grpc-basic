@@ -33,11 +33,27 @@ func (s *server) Add(ctx context.Context, in *pb.AddRequest) (*pb.AddResponse, e
 }
 
 func (s *server) HelloNamaste(ctx context.Context, in *pb.GreeterRequest) (*pb.GreeterResponse, error) {
-	var message = "Bonjour, " + in.Name + "| Namste, " + in.Name
+	if in.Name == "" {
+		return nil, grpc.Errorf(codes.InvalidArgument, "invalid argument")
+	}
+
+	var message = "Bonjour, " + in.Name + "||  Namaste, " + in.Name
 
 	return &pb.GreeterResponse{
 		Message: message,
 	}, nil
+}
+
+func (s *server) GoodBye(ctx context.Context, in *pb.GoodbyeRequest) (*pb.GoodbyeResponse, error) {
+	if in.Name == "" {
+		return nil, grpc.Errorf(codes.InvalidArgument, "invalid argument")
+	}
+
+	var goodBye = in.Name + "Will miss you, sayonara"
+	return &pb.GoodbyeResponse{
+		Message: goodBye,
+	}, nil
+
 }
 
 func main() {

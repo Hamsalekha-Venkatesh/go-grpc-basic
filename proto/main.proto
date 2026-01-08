@@ -1,6 +1,11 @@
 syntax="proto3";
 
+
+import "add.proto";
 import "greeter.proto";
+import "goodbye.proto";
+
+
 option go_package = "/proto/gen;mainapipb";
 
 service Calculate {
@@ -9,14 +14,5 @@ service Calculate {
 
 service Greeter {
   rpc helloNamaste(GreeterRequest) returns(GreeterResponse);
-}
-
-message AddRequest {
-  int32 a = 1;
-  int32 b = 2;
-
-}
-
-message AddResponse {
-  int64  sum = 1;
+  rpc goodBye(GoodbyeRequest) returns(GoodbyeResponse);
 }
