@@ -1,0 +1,11 @@
+syntax="proto3";
+
+option go_package = "/proto/gen;mainapipb";
+
+message GreeterRequest {
+  string name = 1;
+}
+
+message GreeterResponse {
+  string message = 1;
+}

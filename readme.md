@@ -3,6 +3,10 @@
 
 2. `go install google.golang.org/grpc/cmd/protoc-gen-go-grpc`
 
-3. `protoc --go_out=. --go-grpc_out=. proto/main.proto`
+3. ` protoc \
+  -I proto \
+  --go_out=. \
+  --go-grpc_out=. \
+  proto/greeter.proto proto/main.proto`
 
 5. `go get google.golang.org/grpc`
